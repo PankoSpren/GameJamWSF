@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: bordersqyuare
+  m_Name: Hexagon Pointed-Top
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: cface52635ceb7a48b3035588e0dc087, type: 3}
+  m_Sprite: {fileID: -2135585597343286014, guid: 883710b137136024a89825670bcccfce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
