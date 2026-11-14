@@ -37,8 +37,8 @@ public class PlayerControll : MonoBehaviour
     bool victoryMarchInProgress = false;
 
 
-    public int maxSpool = 40;
-    public int currentSpool = 40;
+    public int maxSpool = 36;
+    public int currentSpool = 36;
 
     
     void Start()
@@ -80,7 +80,9 @@ public class PlayerControll : MonoBehaviour
             {
                 Debug.Log("Positive interaction");
 
-                ChangeSpool(10);
+                ChangeSpool(4);
+                hudLogic.SetMaxSpool(maxSpool + 4);
+                maxSpool = maxSpool + 4;
                 /*currentSpool = currentSpool + 10;
                 hudLogic.changeSpool(10);*/
                 interactablePositive.SetTile(gridPosition, null);
@@ -89,7 +91,7 @@ public class PlayerControll : MonoBehaviour
             {
                 Debug.Log("Negative interaction");
 
-                ChangeSpool(-10);
+                ChangeSpool(-4);
                 /* currentSpool = currentSpool - 10;
                  hudLogic.changeSpool(-10);*/
                 interactableNegative.SetTile(gridPosition, null);
@@ -320,6 +322,10 @@ public class PlayerControll : MonoBehaviour
         if (currentSpool < 0)
         { 
             currentSpool = 0;
+        }
+        if (currentSpool > maxSpool)
+        { 
+            currentSpool = maxSpool;
         }
         print("Spool Count " + currentSpool);
     }
