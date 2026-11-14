@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ca445574b999e664680de272d4dabd6c
+guid: 6e05706c3f2b13c44bfe89373ee76245
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: wloczka_sprite_ball 1
+  - name: wloczka_logo
     originalName: 
-    pivot: {x: 0.61538464, y: -0.28}
+    pivot: {x: 0.48387095, y: -0.19999999}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 26
+      width: 31
       height: 25
-    spriteID: 72000ad6748d5c34489561447ca46589
+    spriteID: d91639330015b504292c611e3501293b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,21 +144,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1821702908
-    name: wloczka_sprite_ball 1
+    guid: 1461208135
+    name: wloczka_logo
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: wloczka_sprite_ball 1
+    - name: wloczka_logo
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 7
-        width: 26
+        x: 1
+        y: 5
+        width: 31
         height: 25
-      spriteId: 72000ad6748d5c34489561447ca46589
+      spriteId: d91639330015b504292c611e3501293b
     linkedCells: []
     parentIndex: -1
   platformSettings:
