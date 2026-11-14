@@ -34,6 +34,7 @@ public class PlayerControll : MonoBehaviour
 
     int collectedButtons = 0;
     int buttonCount = 1;
+    bool victoryMarchInProgress = false;
 
 
     public int maxSpool = 40;
@@ -50,6 +51,7 @@ public class PlayerControll : MonoBehaviour
 
     void Update()
     {
+        if(victoryMarchInProgress == true){ return; }
         if (Input.GetKeyDown(KeyCode.W)) { movePlayer(new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.S)) { movePlayer(-new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.A)) { movePlayer(-new Vector2(1, 0)); }
@@ -331,6 +333,10 @@ public class PlayerControll : MonoBehaviour
     }
     void PerformVictoryMarch()
     {
+        victoryMarchInProgress = true;
+        buttonCount += 1;
+        collectedButtons = 0;
+        hudLogic.SpawnVictory();
         InvokeRepeating("PerformVictoryMarchMove", 0.5f ,0.5f);
     }
     void PerformVictoryMarchMove()
