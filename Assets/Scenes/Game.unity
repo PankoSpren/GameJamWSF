@@ -423,7 +423,7 @@ MonoBehaviour:
   wallTilemap: {fileID: 2067921485}
   interactableNegative: {fileID: 976594355}
   interactablePositive: {fileID: 406190458}
-  buttonTile: {fileID: 0}
+  buttonTile: {fileID: 863056596}
   spoolTrail1: {fileID: 1365505939}
   spoolTrail2: {fileID: 1597365047}
   spoolTrail3: {fileID: 1178863761}
@@ -6523,7 +6523,7 @@ Tilemap:
       - {fileID: -3022886907972318803, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
       - {fileID: -8633690556169237379, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
       - {fileID: -9081973606501634924, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
-      m_AnimationSpeed: 18.76676
+      m_AnimationSpeed: 19.177723
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 9, y: 10, z: 0}
@@ -6567,7 +6567,7 @@ Tilemap:
       - {fileID: -3022886907972318803, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
       - {fileID: -8633690556169237379, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
       - {fileID: -9081973606501634924, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
-      m_AnimationSpeed: 19.270494
+      m_AnimationSpeed: 19.104343
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
