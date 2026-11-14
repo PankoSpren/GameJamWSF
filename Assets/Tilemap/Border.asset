@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Triangle2
+  m_Name: Border
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: 2170a94b83035d4489ef01132d860f6b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: aed87159d24255a4ea2bb5c3feb881be, type: 3}
+  m_Color: {r: 1, g: 0.6181782, b: 0, a: 1}
   m_Transform:
     e00: 1
     e01: 0
