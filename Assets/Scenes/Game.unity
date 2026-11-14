@@ -422,6 +422,16 @@ MonoBehaviour:
   wallTilemap: {fileID: 2067921485}
   interactableNegative: {fileID: 976594355}
   interactablePositive: {fileID: 406190458}
+  spoolTrail1: {fileID: 1365505939}
+  spoolTrail2: {fileID: 1597365047}
+  spoolTrail3: {fileID: 1178863761}
+  spoolTrail4: {fileID: 104254252}
+  spoolStraightTopDown: {fileID: 11400000, guid: 6a82d8405c28f904bac2596d04f531d5, type: 2}
+  spoolStraightLeftRight: {fileID: 11400000, guid: 4faba71f175849741b4be62d2e51b548, type: 2}
+  spoolLeftDown: {fileID: 11400000, guid: 6a8c8d5bdeeec78469cbea300f4f4c39, type: 2}
+  spoolLeftUp: {fileID: 11400000, guid: 5eb76076ea7a6064e894675a0d81a7f4, type: 2}
+  spoolRightDown: {fileID: 11400000, guid: 2df81dde3ca6cd949a07bd38b8027e68, type: 2}
+  spoolRightUp: {fileID: 11400000, guid: d7acc3af80b60f3418ac373ffbee4a3a, type: 2}
   maxSpool: 100
   currentSpool: 20
 --- !u!1 &104254249
