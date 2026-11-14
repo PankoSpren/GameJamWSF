@@ -54,11 +54,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canMoveUp == false)
             {
-                print("MoveNo");
+                //print("MoveNo");
                 return false;
             }
             DeployLine();
-            print("MoveUp");
+            //print("MoveUp");
             
             transform.position = new Vector3(currentPossition.x, currentPossition.y + 1);
             newTilePosition = new Vector3Int(newTilePosition.x, newTilePosition.y + 1, newTilePosition.z);
@@ -68,11 +68,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canMoveDown == false)
             {
-                print("MoveNo");
+               // print("MoveNo");
                 return false;
             }
             DeployLine();
-            print("Movedown");
+            //print("Movedown");
             transform.position = new Vector3(currentPossition.x, currentPossition.y - 1);
             newTilePosition = new Vector3Int(newTilePosition.x, newTilePosition.y - 1, newTilePosition.z);
         }
@@ -90,11 +90,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canMoveLeft == false)
             {
-                print("MoveNo");
+             //   print("MoveNo");
                 return false;
             }
             DeployLine();
-            print("Moveleft");
+           // print("Moveleft");
             transform.position = new Vector3(currentPossition.x - 1, currentPossition.y);
             newTilePosition = new Vector3Int(newTilePosition.x - 1, newTilePosition.y, newTilePosition.z);
         }
@@ -102,11 +102,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canMoveRight == false)
             {
-                print("MoveNo");
+              //  print("MoveNo");
                 return false;
             }
             DeployLine();
-            print("Moveright");
+           // print("Moveright");
             transform.position = new Vector3(currentPossition.x + 1, currentPossition.y);
             newTilePosition = new Vector3Int(newTilePosition.x + 1, newTilePosition.y, newTilePosition.z);
         }
@@ -123,22 +123,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction == 0)
         {
-            print("cannotmoveup");
+          //  print("cannotmoveup");
             canMoveUp = false;
         }
         if (direction == 1)
         {
-            print("cannotmoveright");
+          //  print("cannotmoveright");
             canMoveRight = false;
         }
         if (direction == 2)
         {
-            print("cannotmovedown");
+          //  print("cannotmovedown");
             canMoveDown = false;
         }
         if (direction == 3)
         {
-            print("cannotmoveleft");
+          //  print("cannotmoveleft");
             canMoveLeft = false;
         }
     }
@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
     void DeployColliders()
     {
-        print("deployed");
+
         colliders[0].transform.position = new Vector2(colliders[0].transform.position.x, colliders[0].transform.position.y + 0.5f);
         colliders[1].transform.position = new Vector2(colliders[1].transform.position.x + 0.5f, colliders[1].transform.position.y);
         colliders[2].transform.position = new Vector2(colliders[2].transform.position.x, colliders[2].transform.position.y - 0.5f);
@@ -165,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
     
     void RetractColliders()
     {
-        print("retracted");
+
         colliders[0].transform.position = new Vector2(colliders[0].transform.position.x, colliders[0].transform.position.y - 0.5f);
         colliders[1].transform.position = new Vector2(colliders[1].transform.position.x - 0.5f, colliders[1].transform.position.y);
         colliders[2].transform.position = new Vector2(colliders[2].transform.position.x, colliders[2].transform.position.y + 0.5f);
@@ -176,7 +176,11 @@ public class PlayerMovement : MonoBehaviour
     {
         print("paint");
         groundTile.SetTile(newTilePosition, Tile);
-  
+        TileBase tempTile =  groundTile.GetTile(newTilePosition);
+        Matrix4x4 changeRotation = new Matrix4x4(newTilePosition, );
+        groundTile.SetTransformMatrix(newTilePosition,);
     }
+
+    
 
 }
