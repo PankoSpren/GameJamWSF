@@ -6,23 +6,22 @@ using UnityEngine.UI;
 public class HUDLogic : MonoBehaviour
 {
 
-    public Slider slider;
-
-    void Update()
+    public Slider spoolSlider;
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.W)) {changeSpool(-10);}
-        else if (Input.GetKeyDown(KeyCode.S)) {changeSpool(10);}
+        spoolSlider.maxValue = 100;
+        spoolSlider.value = 100;
     }
 
     public void SetMaxSpool(int maxSpool)
     {
-        slider.maxValue = maxSpool;
-        slider.value = maxSpool;
+        spoolSlider.maxValue = maxSpool;
+        spoolSlider.value = maxSpool;
     }
     // Start is called before the first frame update
     public void changeSpool(int spool)
     {
-        slider.value = slider.value +spool;
+        spoolSlider.value = spoolSlider.value +spool;
     }
 
 

@@ -26,11 +26,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
-        if (Input.GetKeyDown(KeyCode.Space) == true)
-        { 
-            DeployColliders();
-        }
 
         if (Input.GetKeyDown(KeyCode.W) == true || Input.GetKeyDown(KeyCode.S) == true)
         {

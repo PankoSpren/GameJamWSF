@@ -10,7 +10,6 @@ public class SceneLoading : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            Debug.Log("YEEEEEEbanie");
             SceneManager.LoadScene("Game");
         }
         else if (Input.GetKeyDown(KeyCode.Escape)) 
