@@ -40,7 +40,7 @@ public class PlayerControll : MonoBehaviour
     public int maxSpool = 36;
     public int currentSpool = 36;
 
-    
+
     void Start()
     {
         startingLocation = groundTilemap.WorldToCell(transform.position);
@@ -51,7 +51,7 @@ public class PlayerControll : MonoBehaviour
 
     void Update()
     {
-        if(victoryMarchInProgress == true){ return; }
+        if (victoryMarchInProgress == true) { return; }
         if (Input.GetKeyDown(KeyCode.W)) { movePlayer(new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.S)) { movePlayer(-new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.A)) { movePlayer(-new Vector2(1, 0)); }
@@ -71,8 +71,8 @@ public class PlayerControll : MonoBehaviour
                 CheckMoveDirection(direction);
             }
             if (PlaceThread(direction) == false)
-            { 
-            return;
+            {
+                return;
             }
 
             Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
@@ -92,6 +92,8 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("Negative interaction");
 
                 ChangeSpool(-4);
+                hudLogic.SetMaxSpool(maxSpool - 4);
+                maxSpool = maxSpool - 4;
                 /* currentSpool = currentSpool - 10;
                  hudLogic.changeSpool(-10);*/
                 interactableNegative.SetTile(gridPosition, null);
@@ -108,7 +110,7 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("no interaction");
             }
 
-                transform.position += (Vector3)direction;
+            transform.position += (Vector3)direction;
         }
 
         CheckVictoryConditions();
@@ -175,7 +177,7 @@ public class PlayerControll : MonoBehaviour
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position);
         Vector3Int futureGridPostion = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
 
-        if (currentMoveDirection + previousMoveDirection[previousMoveDirection.Count-1] == 0) //the spool is moving back
+        if (currentMoveDirection + previousMoveDirection[previousMoveDirection.Count - 1] == 0) //the spool is moving back
         {
             gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
             PlaceSpoolTile(gridPosition, null, futureGridPostion, true);
@@ -259,7 +261,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (isReturning == true)
         {
-  
+
             ChangeSpool(1);
             if (spoolTrail5.HasTile(gridPosition) == true)
             {
@@ -269,18 +271,18 @@ public class PlayerControll : MonoBehaviour
             {
                 spoolTrail4.SetTile(gridPosition, null);
             }
-            else if(spoolTrail3.HasTile(gridPosition) == true)
+            else if (spoolTrail3.HasTile(gridPosition) == true)
             {
                 spoolTrail3.SetTile(gridPosition, null);
             }
-            else if(spoolTrail2.HasTile(gridPosition) == true)
+            else if (spoolTrail2.HasTile(gridPosition) == true)
             {
-    
+
                 spoolTrail2.SetTile(gridPosition, null);
             }
-            else if(spoolTrail1.HasTile(gridPosition) == true)
+            else if (spoolTrail1.HasTile(gridPosition) == true)
             {
-   
+
                 spoolTrail1.SetTile(gridPosition, null);
             }
         }
@@ -292,19 +294,19 @@ public class PlayerControll : MonoBehaviour
         {
             spoolTrail5.SetTile(gridPosition, tile);
         }
-        else if(spoolTrail3.HasTile(gridPosition) == true)
+        else if (spoolTrail3.HasTile(gridPosition) == true)
         {
             spoolTrail4.SetTile(gridPosition, tile);
         }
-        else if(spoolTrail2.HasTile(gridPosition) == true)
+        else if (spoolTrail2.HasTile(gridPosition) == true)
         {
             spoolTrail3.SetTile(gridPosition, tile);
         }
-        else if(spoolTrail1.HasTile(gridPosition) == true)
+        else if (spoolTrail1.HasTile(gridPosition) == true)
         {
             spoolTrail2.SetTile(gridPosition, tile);
         }
-        else 
+        else
         {
             spoolTrail1.SetTile(gridPosition, tile);
         }
@@ -320,11 +322,11 @@ public class PlayerControll : MonoBehaviour
         currentSpool += value;
         hudLogic.changeSpool(value);
         if (currentSpool < 0)
-        { 
+        {
             currentSpool = 0;
         }
         if (currentSpool > maxSpool)
-        { 
+        {
             currentSpool = maxSpool;
         }
         print("Spool Count " + currentSpool);
@@ -343,10 +345,10 @@ public class PlayerControll : MonoBehaviour
         buttonCount += 1;
         collectedButtons = 0;
         hudLogic.SpawnVictory();
-        InvokeRepeating("PerformVictoryMarchMove", 0.5f ,0.5f);
+        InvokeRepeating("PerformVictoryMarchMove", 0.5f, 0.5f);
     }
     void PerformVictoryMarchMove()
-    { 
+    {
         victoryMoveCount++;
         PlaceSpoolTile(groundTilemap.WorldToCell(transform.position), null, groundTilemap.WorldToCell(transform.position), true);
         if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == -1)
@@ -354,7 +356,7 @@ public class PlayerControll : MonoBehaviour
             Vector2 i = new Vector2(0, 1);
             transform.position += (Vector3)i;
         }
-   
+
         if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == -2)
         {
             Vector2 i = new Vector2(1, 0);
@@ -374,7 +376,7 @@ public class PlayerControll : MonoBehaviour
         }
 
 
-        print(previousMoveDirection[previousMoveDirection.Count - victoryMoveCount]); 
+        print(previousMoveDirection[previousMoveDirection.Count - victoryMoveCount]);
 
         if (victoryMoveCount == previousMoveDirection.Count - 1)
         {
