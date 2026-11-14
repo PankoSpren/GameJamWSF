@@ -11,10 +11,16 @@ public class PlayerControll : MonoBehaviour
     [SerializeField]private Tilemap interactableNegative;
     [SerializeField]private Tilemap interactablePositive;
 
-    public int maxSpool = 100;
+    public int maxSpool = 50;
     public int currentSpool = 50; 
 
     // Update is called once per frame
+    void Start()
+    {
+        hudLogic.SetMaxSpool(maxSpool);
+        hudLogic.changeSpool(0);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W)) {movePlayer(new Vector2(0, 1));}
@@ -27,23 +33,27 @@ public class PlayerControll : MonoBehaviour
        // playerCube.transform.position += direction;
        if (MoveCheck(direction))
        {
+            Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
             if (InteractableCheck(direction) == 1)
             {
                 Debug.Log("Positive interaction");
                 currentSpool = currentSpool + 10;
                 hudLogic.changeSpool(10);
+                interactablePositive.SetTile(gridPosition, null);
             }
             else if (InteractableCheck(direction) == 2)
             {
                 Debug.Log("Negative interaction");
                 currentSpool = currentSpool - 10;
                 hudLogic.changeSpool(-10);
+                interactableNegative.SetTile(gridPosition, null);
             }
             else if (InteractableCheck(direction) == 0)
             {
                 Debug.Log("no interaction");
             }
             transform.position += (Vector3)direction;
+            hudLogic.changeSpool(-1);
        }
     
     }
