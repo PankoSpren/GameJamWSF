@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         colliders[2].transform.position = new Vector2(colliders[2].transform.position.x, colliders[2].transform.position.y - 0.5f);
         colliders[3].transform.position = new Vector2(colliders[3].transform.position.x - 0.5f, colliders[3].transform.position.y);
 
-        Invoke("RetractColliders", 0.1f);
+        //Invoke("RetractColliders", 0.1f);
  
     }
     
@@ -174,11 +174,11 @@ public class PlayerMovement : MonoBehaviour
 
     void DeployLine()
     {
-        print("paint");
+        //print("paint");
         groundTile.SetTile(newTilePosition, Tile);
         TileBase tempTile =  groundTile.GetTile(newTilePosition);
-        Matrix4x4 changeRotation = new Matrix4x4(newTilePosition, );
-        groundTile.SetTransformMatrix(newTilePosition,);
+        
+
     }
 
     
