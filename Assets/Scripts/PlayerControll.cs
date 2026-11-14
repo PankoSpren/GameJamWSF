@@ -29,7 +29,7 @@ public class PlayerControll : MonoBehaviour
     Vector3Int startingLocation;
 
     List<int> previousMoveDirection = new List<int>();
-    int moveCount = 0;
+    int victoryMoveCount = 0;
     int currentMoveDirection = 0;
 
     int collectedButtons = 0;
@@ -60,7 +60,7 @@ public class PlayerControll : MonoBehaviour
         // playerCube.transform.position += direction;
         if (MoveCheck(direction))
         {
-            if (previousMoveDirection[moveCount] == 0)
+            if (previousMoveDirection[0] == 0)
             {
                 CheckMoveDirection(direction);
             }
@@ -96,6 +96,8 @@ public class PlayerControll : MonoBehaviour
             {
                 Debug.Log("Button");
                 collectedButtons += 1;
+                buttonTile.SetTile(gridPosition, null);
+                print("Number of buttons collected: " + collectedButtons);
             }
             else if (InteractableCheck(direction) == 0)
             {
@@ -321,14 +323,54 @@ public class PlayerControll : MonoBehaviour
     }
     void CheckVictoryConditions()
     {
-        if (groundTilemap.WorldToCell(transform.position) == startingLocation && currentSpool == 0 && buttonCount == collectedButtons)
+        if (groundTilemap.WorldToCell(transform.position) == startingLocation && buttonCount <= collectedButtons)
         {
             print("Victory");
             PerformVictoryMarch();
         }
     }
     void PerformVictoryMarch()
+    {
+        InvokeRepeating("PerformVictoryMarchMove", 0.5f ,0.5f);
+    }
+    void PerformVictoryMarchMove()
     { 
-        
+        victoryMoveCount++;
+        PlaceSpoolTile(groundTilemap.WorldToCell(transform.position), null, groundTilemap.WorldToCell(transform.position), true);
+        if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == -1)
+        {
+            Vector2 i = new Vector2(0, 1);
+            transform.position += (Vector3)i;
+        }
+   
+        if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == -2)
+        {
+            Vector2 i = new Vector2(1, 0);
+            transform.position += (Vector3)i;
+        }
+
+        if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == 1)
+        {
+            Vector2 i = new Vector2(0, -1);
+            transform.position += (Vector3)i;
+        }
+
+        if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == 2)
+        {
+            Vector2 i = new Vector2(-1, 0);
+            transform.position += (Vector3)i;
+        }
+
+
+        print(previousMoveDirection[previousMoveDirection.Count - victoryMoveCount]); 
+
+        if (victoryMoveCount == previousMoveDirection.Count - 1)
+        {
+            CancelInvoke("PerformVictoryMarchMove");
+            print("YouHaveReachedTheStart");
+            print("YouHavePrformed " + (previousMoveDirection.Count - 1) + " moves");
+            print("In the vicotrymarch you moved times; " + victoryMoveCount);
+
+        }
     }
 }
