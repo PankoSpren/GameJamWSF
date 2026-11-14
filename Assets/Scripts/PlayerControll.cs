@@ -119,22 +119,22 @@ public class PlayerControll : MonoBehaviour
     {
         if (direction.y == 1)
         {
-            print("PlayerHasMovedUp");
+            //print("PlayerHasMovedUp");
             currentMoveDirection = 1;
         }
         else if (direction.x == 1)
         {
-            print("PlayerHasMovedRight");
+            //print("PlayerHasMovedRight");
             currentMoveDirection = 2;
         }
         else if (direction.y == -1)
         {
-            print("PlayerHasMovedDown");
+            //print("PlayerHasMovedDown");
             currentMoveDirection = -1;
         }
         else if (direction.x == -1)
         {
-            print("PlayerHasMovedLeft");
+            //print("PlayerHasMovedLeft");
             currentMoveDirection = -2;
         }
         print(currentMoveDirection);
@@ -142,70 +142,136 @@ public class PlayerControll : MonoBehaviour
     void PlaceThread(Vector2 direction)
     {
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position);
+        Vector3Int futureGridPostion = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
         print(previousMoveDirection.Count);
 
         if (currentMoveDirection + previousMoveDirection[previousMoveDirection.Count-1] == 0) //the spool is moving back
         {
             gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
-            spoolTrail1.SetTile(gridPosition, null);
+            PlaceSpoolTile(gridPosition, null, futureGridPostion, true);
+            //spoolTrail1.SetTile(gridPosition, null);
             previousMoveDirection.RemoveAt(previousMoveDirection.Count - 1);
-            //print("Number of prevois move lemetns" + previousMoveDirection.Count);
-           // print("movecount"+moveCount);
-            //moveCount = moveCount-1;
+
             return;
         }
 
          else if (previousMoveDirection[previousMoveDirection.Count - 1] == 0)
         {
-            print("This is fist move");
-            spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
+            //print("This is fist move");
+            PlaceSpoolTile(gridPosition, spoolStraightTopDown, futureGridPostion, false);
+            //spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
         }
  
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && Mathf.Abs(currentMoveDirection) == 2)
         {
 
-                print("PlaceStraightLine");
-            spoolTrail1.SetTile(gridPosition, spoolStraightLeftRight);
+           // print("PlaceStraightLine");
+            PlaceSpoolTile(gridPosition, spoolStraightLeftRight, futureGridPostion, false);
+          //  spoolTrail1.SetTile(gridPosition, spoolStraightLeftRight);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && Mathf.Abs(currentMoveDirection) == 1)
         {
-            print("PlaceStraightLine");
-            spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
+            //print("PlaceStraightLine");
+            PlaceSpoolTile(gridPosition, spoolStraightTopDown, futureGridPostion, false);
+           // spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
         }
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] > 0 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 1)
         {
-            print("Placea leftdowntile");
-            spoolTrail1.SetTile(gridPosition, spoolLeftDown);
+           // print("Placea leftdowntile");
+            PlaceSpoolTile(gridPosition, spoolLeftDown, futureGridPostion, false);
+            //spoolTrail1.SetTile(gridPosition, spoolLeftDown);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] < 0 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 1)
         {
-            print("PlacerightUp");
-            spoolTrail1.SetTile(gridPosition, spoolRightUp);
+            //print("PlacerightUp");
+            PlaceSpoolTile(gridPosition, spoolRightUp, futureGridPostion, false);
+           // spoolTrail1.SetTile(gridPosition, spoolRightUp);
         }
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == 2 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-            print("Placea leftuptile");
-            spoolTrail1.SetTile(gridPosition, spoolLeftUp);
+           // print("Placea leftuptile");
+            PlaceSpoolTile(gridPosition, spoolLeftUp, futureGridPostion, false);
+           // spoolTrail1.SetTile(gridPosition, spoolLeftUp);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == -1 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-            print("Placea leftuptile");
-            spoolTrail1.SetTile(gridPosition, spoolLeftUp);
+           // print("Placea leftuptile");
+            PlaceSpoolTile(gridPosition, spoolLeftUp, futureGridPostion, false);
+          //  spoolTrail1.SetTile(gridPosition, spoolLeftUp);
         }
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == -2 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-            print("Placea right down");
-            spoolTrail1.SetTile(gridPosition, spoolRightDown);
+           // print("Placea right down");
+            PlaceSpoolTile(gridPosition, spoolRightDown, futureGridPostion, false);
+            //spoolTrail1.SetTile(gridPosition, spoolRightDown);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == 1 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-            print("Placea right down");
-            spoolTrail1.SetTile(gridPosition, spoolRightDown);
+           // print("Placea right down");
+            PlaceSpoolTile(gridPosition, spoolRightDown, futureGridPostion, false);
+           // spoolTrail1.SetTile(gridPosition, spoolRightDown);
         }
         previousMoveDirection.Add(currentMoveDirection);
         //print(previousMoveDirection);
+    }
+
+    void PlaceSpoolTile(Vector3Int gridPosition, AnimatedTile tile, Vector3Int futureGidPossiton, bool isReturning)
+    {
+        if (isReturning == true)
+        {
+
+            if (spoolTrail5.HasTile(gridPosition) == true)
+            {
+                spoolTrail5.SetTile(gridPosition, null);
+            }
+            else if (spoolTrail4.HasTile(gridPosition) == true)
+            {
+                spoolTrail4.SetTile(gridPosition, null);
+            }
+            else if(spoolTrail3.HasTile(gridPosition) == true)
+            {
+                spoolTrail3.SetTile(gridPosition, null);
+            }
+            else if(spoolTrail2.HasTile(gridPosition) == true)
+            {
+                print("Works");
+                spoolTrail2.SetTile(gridPosition, null);
+            }
+            else if(spoolTrail1.HasTile(gridPosition) == true)
+            {
+                print("cut");
+                spoolTrail1.SetTile(gridPosition, null);
+            }
+        }
+
+        else if (spoolTrail5.HasTile(gridPosition) == true)
+        {
+            print("We Have A problem");
+        }
+        else if (spoolTrail4.HasTile(gridPosition) == true)
+        {
+            spoolTrail5.SetTile(gridPosition, tile);
+        }
+        else if(spoolTrail3.HasTile(gridPosition) == true)
+        {
+            spoolTrail4.SetTile(gridPosition, tile);
+        }
+        else if(spoolTrail2.HasTile(gridPosition) == true)
+        {
+            spoolTrail3.SetTile(gridPosition, tile);
+        }
+        else if(spoolTrail1.HasTile(gridPosition) == true)
+        {
+            spoolTrail2.SetTile(gridPosition, tile);
+            print("cut");
+        }
+        else 
+        {
+            print("Works");
+            spoolTrail1.SetTile(gridPosition, tile);
+        }
     }
 }
