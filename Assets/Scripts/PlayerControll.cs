@@ -11,6 +11,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Tilemap wallTilemap;
     [SerializeField] private Tilemap interactableNegative;
     [SerializeField] private Tilemap interactablePositive;
+    [SerializeField] private Tilemap buttonTile;
 
     [SerializeField] private Tilemap spoolTrail1;
     [SerializeField] private Tilemap spoolTrail2;
@@ -25,10 +26,15 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolRightDown;
     [SerializeField] private AnimatedTile spoolRightUp;
 
+    Vector3Int startingLocation;
 
     List<int> previousMoveDirection = new List<int>();
     int moveCount = 0;
     int currentMoveDirection = 0;
+
+    int collectedButtons = 0;
+    int buttonCount = 1;
+
 
     public int maxSpool = 40;
     public int currentSpool = 40;
@@ -36,7 +42,7 @@ public class PlayerControll : MonoBehaviour
     
     void Start()
     {
-
+        startingLocation = groundTilemap.WorldToCell(transform.position);
         previousMoveDirection.Add(0);
         hudLogic.SetMaxSpool(maxSpool);
         hudLogic.changeSpool(0);
@@ -71,25 +77,35 @@ public class PlayerControll : MonoBehaviour
             if (InteractableCheck(direction) == 1)
             {
                 Debug.Log("Positive interaction");
-                currentSpool = currentSpool + 10;
-                hudLogic.changeSpool(10);
+
+                ChangeSpool(10);
+                /*currentSpool = currentSpool + 10;
+                hudLogic.changeSpool(10);*/
                 interactablePositive.SetTile(gridPosition, null);
             }
             else if (InteractableCheck(direction) == 2)
             {
                 Debug.Log("Negative interaction");
 
-                currentSpool = currentSpool - 10;
-                hudLogic.changeSpool(-10);
+                ChangeSpool(-10);
+                /* currentSpool = currentSpool - 10;
+                 hudLogic.changeSpool(-10);*/
                 interactableNegative.SetTile(gridPosition, null);
+            }
+            else if (InteractableCheck(direction) == 3)
+            {
+                Debug.Log("Button");
+                collectedButtons += 1;
             }
             else if (InteractableCheck(direction) == 0)
             {
                 Debug.Log("no interaction");
             }
-            transform.position += (Vector3)direction;
+
+                transform.position += (Vector3)direction;
         }
 
+        CheckVictoryConditions();
     }
 
     bool MoveCheck(Vector2 direction)
@@ -116,6 +132,12 @@ public class PlayerControll : MonoBehaviour
             Debug.Log("Found negative interactable tile at position: " + gridPosition);
             return 2;
         }
+        if (buttonTile.HasTile(gridPosition))
+        {
+            Debug.Log("Found button tile at position: " + gridPosition);
+            return 3;
+        }
+
         return 0;
     }
     void CheckMoveDirection(Vector2 direction)
@@ -231,7 +253,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (isReturning == true)
         {
-            print("thisshoudgo");
+  
             ChangeSpool(1);
             if (spoolTrail5.HasTile(gridPosition) == true)
             {
@@ -296,5 +318,17 @@ public class PlayerControll : MonoBehaviour
             currentSpool = 0;
         }
         print("Spool Count " + currentSpool);
-    }    
+    }
+    void CheckVictoryConditions()
+    {
+        if (groundTilemap.WorldToCell(transform.position) == startingLocation && currentSpool == 0 && buttonCount == collectedButtons)
+        {
+            print("Victory");
+            PerformVictoryMarch();
+        }
+    }
+    void PerformVictoryMarch()
+    { 
+        
+    }
 }
