@@ -148,7 +148,8 @@ public class PlayerControll : MonoBehaviour
         if (currentMoveDirection + previousMoveDirection[previousMoveDirection.Count-1] == 0) //the spool is moving back
         {
             gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
-            spoolTrail1.SetTile(gridPosition, null);
+            PlaceSpoolTile(gridPosition, null, futureGridPostion, true);
+            //spoolTrail1.SetTile(gridPosition, null);
             previousMoveDirection.RemoveAt(previousMoveDirection.Count - 1);
 
             return;
@@ -221,7 +222,29 @@ public class PlayerControll : MonoBehaviour
     {
         if (isReturning == true)
         {
-            spoolTrail5.SetTile(gridPosition, tile);
+
+            if (spoolTrail5.HasTile(gridPosition) == true)
+            {
+                spoolTrail5.SetTile(gridPosition, null);
+            }
+            else if (spoolTrail4.HasTile(gridPosition) == true)
+            {
+                spoolTrail4.SetTile(gridPosition, null);
+            }
+            else if(spoolTrail3.HasTile(gridPosition) == true)
+            {
+                spoolTrail3.SetTile(gridPosition, null);
+            }
+            else if(spoolTrail2.HasTile(gridPosition) == true)
+            {
+                print("Works");
+                spoolTrail2.SetTile(gridPosition, null);
+            }
+            else if(spoolTrail1.HasTile(gridPosition) == true)
+            {
+                print("cut");
+                spoolTrail1.SetTile(gridPosition, null);
+            }
         }
 
         else if (spoolTrail5.HasTile(gridPosition) == true)
