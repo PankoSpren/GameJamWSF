@@ -123,8 +123,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: CornerTopperPolowa
     originalName: 
-    pivot: {x: -1.0512735, y: 0.4953069}
-    alignment: 9
+    pivot: {x: 0, y: 0.5}
+    alignment: 4
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
