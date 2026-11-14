@@ -9,6 +9,9 @@ public class HUDLogic : MonoBehaviour
 
     public Slider spoolSlider;
     public TMP_Text count;
+    public TMP_Text victoryWord;
+    public TMP_Text victoryDescription;
+
 
     public void SetMaxSpool(int maxSpool)
     {
@@ -23,6 +26,19 @@ public class HUDLogic : MonoBehaviour
         spoolSlider.value = spoolSlider.value + spool;
         count.text = spoolSlider.value.ToString();
     }
+    public void SpawnVictory()
+    {
+        victoryWord.text = "Victory";
+        Invoke("SpawnVictoryDescription", 2f);
+
+    }
+
+    void SpawnVictoryDescription()
+    {
+        victoryDescription.text = "But now you must retern to begin your journey anew";
+    }
+
+
     
 }
 
