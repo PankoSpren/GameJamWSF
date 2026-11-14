@@ -122,6 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &244773331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +180,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: a4a096bc964a97b46980beec2161121a, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &621880083
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +274,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &1665489851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,11 +389,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: c88024c2239ed3743a649baeae2d069d, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 621880086}
-  - {fileID: 1665489851}
-  - {fileID: 1674890185}
-  - {fileID: 244773331}
