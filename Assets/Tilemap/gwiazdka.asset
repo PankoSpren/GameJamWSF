@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: gwiazdka
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -2135585597343286014, guid: 883710b137136024a89825670bcccfce, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.98544884, b: 0, a: 1}
   m_Transform:
     e00: 1
     e01: 0
