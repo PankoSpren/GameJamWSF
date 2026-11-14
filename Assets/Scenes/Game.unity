@@ -435,8 +435,10 @@ MonoBehaviour:
   spoolLeftUp: {fileID: 11400000, guid: 5eb76076ea7a6064e894675a0d81a7f4, type: 2}
   spoolRightDown: {fileID: 11400000, guid: 2df81dde3ca6cd949a07bd38b8027e68, type: 2}
   spoolRightUp: {fileID: 11400000, guid: d7acc3af80b60f3418ac373ffbee4a3a, type: 2}
-  maxSpool: 34
-  currentSpool: 34
+  capturedButton: {fileID: 11400000, guid: 2896e76108a17e147a9ede3a91c24e68, type: 2}
+  normalButton: {fileID: 11400000, guid: a74b98c7aeab27e4ca59ff1b55752b5c, type: 2}
+  maxSpool: 36
+  currentSpool: 36
 --- !u!95 &98232422
 Animator:
   serializedVersion: 5
@@ -447,7 +449,7 @@ Animator:
   m_GameObject: {fileID: 98232416}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -4981100536624768360, guid: c11dc36c8a9ef0e4a9f585688cd55e48, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3e6010a11fcb3464d80025d2a9615e56, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

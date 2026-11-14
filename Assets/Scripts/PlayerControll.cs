@@ -25,6 +25,8 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolLeftUp;
     [SerializeField] private AnimatedTile spoolRightDown;
     [SerializeField] private AnimatedTile spoolRightUp;
+    [SerializeField] private AnimatedTile capturedButton;
+    [SerializeField] private AnimatedTile normalButton;
 
     Vector3Int startingLocation;
 
@@ -102,7 +104,7 @@ public class PlayerControll : MonoBehaviour
             {
                 Debug.Log("Button");
                 collectedButtons += 1;
-                buttonTile.SetTile(gridPosition, null);
+                buttonTile.SetTile(gridPosition, capturedButton);
                 print("Number of buttons collected: " + collectedButtons);
             }
             else if (InteractableCheck(direction) == 0)
@@ -181,6 +183,12 @@ public class PlayerControll : MonoBehaviour
         {
             gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
             PlaceSpoolTile(gridPosition, null, futureGridPostion, true);
+            if (InteractableCheck(direction) == 3)
+            {
+                collectedButtons -= 1;
+                buttonTile.SetTile(gridPosition, spoolLeftUp);
+                print("Number of buttons collected: " + collectedButtons);
+            }
             //spoolTrail1.SetTile(gridPosition, null);
             previousMoveDirection.RemoveAt(previousMoveDirection.Count - 1);
 
