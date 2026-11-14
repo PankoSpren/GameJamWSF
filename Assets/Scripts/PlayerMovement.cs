@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     bool canMoveDown;
     bool canMoveLeft;
     bool canMoveRight;
+
+    [SerializeField] Tilemap groundTile;
+    [SerializeField] Tile Tile;
+    [SerializeField] Vector3Int newTilePosition;
+
 
     public GameObject[] colliders;
 
@@ -26,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
 
         if (Input.GetKeyDown(KeyCode.W) == true || Input.GetKeyDown(KeyCode.S) == true)
         {
@@ -48,11 +57,12 @@ public class PlayerMovement : MonoBehaviour
                 print("MoveNo");
                 return false;
             }
-
+            DeployLine();
             print("MoveUp");
             
             transform.position = new Vector3(currentPossition.x, currentPossition.y + 1);
- 
+            newTilePosition = new Vector3Int(newTilePosition.x, newTilePosition.y + 1, newTilePosition.z);
+
         }
         else if (direction == false)
         {
@@ -61,11 +71,13 @@ public class PlayerMovement : MonoBehaviour
                 print("MoveNo");
                 return false;
             }
-
+            DeployLine();
             print("Movedown");
             transform.position = new Vector3(currentPossition.x, currentPossition.y - 1);
+            newTilePosition = new Vector3Int(newTilePosition.x, newTilePosition.y - 1, newTilePosition.z);
         }
 
+ 
 
         currentPossition = transform.position;
         ClearWallBools();
@@ -81,9 +93,10 @@ public class PlayerMovement : MonoBehaviour
                 print("MoveNo");
                 return false;
             }
-
+            DeployLine();
             print("Moveleft");
             transform.position = new Vector3(currentPossition.x - 1, currentPossition.y);
+            newTilePosition = new Vector3Int(newTilePosition.x - 1, newTilePosition.y, newTilePosition.z);
         }
         else if (direction == false)
         {
@@ -92,10 +105,13 @@ public class PlayerMovement : MonoBehaviour
                 print("MoveNo");
                 return false;
             }
-
+            DeployLine();
             print("Moveright");
             transform.position = new Vector3(currentPossition.x + 1, currentPossition.y);
+            newTilePosition = new Vector3Int(newTilePosition.x + 1, newTilePosition.y, newTilePosition.z);
         }
+
+        
 
         currentPossition = transform.position;
         ClearWallBools();
@@ -156,7 +172,11 @@ public class PlayerMovement : MonoBehaviour
         colliders[3].transform.position = new Vector2(colliders[3].transform.position.x + 0.5f, colliders[3].transform.position.y);
     }
 
-
-
+    void DeployLine()
+    {
+        print("paint");
+        groundTile.SetTile(newTilePosition, Tile);
+  
+    }
 
 }
