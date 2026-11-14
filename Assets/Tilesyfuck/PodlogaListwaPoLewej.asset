@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: PodlogaListwaPoLewej
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1174772842556914929, guid: 9c70b38b629fb4046b57c8261afd8d0e, type: 3}
+  m_Sprite: {fileID: -1174772842556914929, guid: 640afed7e0d72f4419b51edf5b2496b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

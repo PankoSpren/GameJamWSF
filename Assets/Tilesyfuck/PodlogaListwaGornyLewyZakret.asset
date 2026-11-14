@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: PodlogaListwaGornyLewyZakret
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2032248782426127172, guid: a1c2ee3469e39e745aa349a9c50d61f3, type: 3}
+  m_Sprite: {fileID: -2032248782426127172, guid: cb5ba202adc89cb47a2385562ab26a03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
