@@ -16,6 +16,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Tilemap spoolTrail2;
     [SerializeField] private Tilemap spoolTrail3;
     [SerializeField] private Tilemap spoolTrail4;
+    [SerializeField] private Tilemap spoolTrail5;
 
     [SerializeField] private AnimatedTile spoolStraightTopDown;
     [SerializeField] private AnimatedTile spoolStraightLeftRight;
