@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     bool performedMove;
-    Vector2 currentPossition = new Vector2 (1.5f, -0.5f);
+    public float xStartPosition;
+    public float yStartPosition;
+    Vector2 currentPossition = new Vector2(-2.5f, -3.5f);
     bool canMoveUp;
     bool canMoveDown;
     bool canMoveLeft;
@@ -16,13 +18,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+ 
         ClearWallBools();
-       // DeployColliders();
+        DeployColliders();
     }
 
     // Update is called once per frame
     void Update()
     {
+ 
         if (Input.GetKeyDown(KeyCode.Space) == true)
         { 
             DeployColliders();
@@ -138,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
     void DeployColliders()
     {
+        print("deployed");
         colliders[0].transform.position = new Vector2(colliders[0].transform.position.x, colliders[0].transform.position.y + 0.5f);
         colliders[1].transform.position = new Vector2(colliders[1].transform.position.x + 0.5f, colliders[1].transform.position.y);
         colliders[2].transform.position = new Vector2(colliders[2].transform.position.x, colliders[2].transform.position.y - 0.5f);

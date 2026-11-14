@@ -20,6 +20,7 @@ public class CheckTile : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        print("test");
         if (collision.gameObject.CompareTag("Wall") == true)
         {
             print("detectedwall");
@@ -28,7 +29,8 @@ public class CheckTile : MonoBehaviour
         else
         {
             print("no wall");
+            return;
         }
-
+        print("test");
     }
 }
