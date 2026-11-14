@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: -3022886907972318803, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -8633690556169237379, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -9081973606501634924, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
-  m_MinSpeed: 20
+  m_MinSpeed: 17
   m_MaxSpeed: 20
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
