@@ -427,7 +427,7 @@ MonoBehaviour:
   spoolTrail2: {fileID: 1597365047}
   spoolTrail3: {fileID: 1178863761}
   spoolTrail4: {fileID: 104254252}
-  spoolTrail5: {fileID: 0}
+  spoolTrail5: {fileID: 644159424}
   spoolStraightTopDown: {fileID: 11400000, guid: 3cb025d57a8cc2a43becb1b2f766ba29, type: 2}
   spoolStraightLeftRight: {fileID: 11400000, guid: 4faba71f175849741b4be62d2e51b548, type: 2}
   spoolLeftDown: {fileID: 11400000, guid: 6a8c8d5bdeeec78469cbea300f4f4c39, type: 2}
