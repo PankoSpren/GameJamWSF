@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip background;
     public AudioClip Cat;
     public AudioClip wloczkacollect;
-    public AudioClip chodzenie;
+    //public AudioClip wczkachodzenie;
     public AudioClip star;
    
     private void Start()

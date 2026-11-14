@@ -284,7 +284,7 @@ MonoBehaviour:
   xStartPosition: -5.5
   yStartPosition: -3.5
   groundTile: {fileID: 485527017}
-  Tile: {fileID: 11400000, guid: af4e3a370099d294d9fd6af540f589c7, type: 2}
+  Tile: {fileID: 0}
   newTilePosition: {x: -3, y: -4, z: 0}
   colliders:
   - {fileID: 1036692576}
@@ -7779,7 +7779,6 @@ MonoBehaviour:
   background: {fileID: 8300000, guid: 0f1a6dd440376bd41a4b99daf0193481, type: 3}
   Cat: {fileID: 0}
   wloczkacollect: {fileID: 0}
-  "w\u0142\xF3czkachodzenie": {fileID: 0}
   star: {fileID: 0}
 --- !u!1 &2144902758
 GameObject:
