@@ -12,12 +12,14 @@ public class HUDLogic : MonoBehaviour
     public TMP_Text victoryWord;
     public TMP_Text victoryDescription;
 
+    private void Start()
+    {
+    }
 
     public void SetMaxSpool(int maxSpool)
     {
-
         spoolSlider.maxValue = maxSpool;
-        spoolSlider.value = maxSpool;
+       // spoolSlider.value = maxSpool;
     }
     // Start is called before the first frame update
     public void changeSpool(int spool)
