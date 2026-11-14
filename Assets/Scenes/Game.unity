@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 98232417}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,15 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xStartPosition: -5.5
   yStartPosition: -3.5
-<<<<<<< Updated upstream
   groundTile: {fileID: 0}
   Tile: {fileID: 0}
   newTilePosition: {x: 0, y: 0, z: 0}
-=======
-  groundTile: {fileID: 485527017}
-  Tile: {fileID: 11400000, guid: e0ce6f8f2b32ca740b6bee49b7e854fe, type: 2}
-  newTilePosition: {x: -3, y: -4, z: 0}
->>>>>>> Stashed changes
   colliders:
   - {fileID: 1036692576}
   - {fileID: 1870778392}
@@ -594,10 +588,9 @@ GameObject:
   - component: {fileID: 406190456}
   - component: {fileID: 406190458}
   - component: {fileID: 406190457}
-  - component: {fileID: 406190459}
   m_Layer: 0
   m_Name: PickUps+
-  m_TagString: Additive
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,42 +791,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &406190459
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 406190455}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
-  m_UseDelaunayMesh: 0
 --- !u!1 &485527014
 GameObject:
   m_ObjectHideFlags: 0
@@ -6246,10 +6203,9 @@ GameObject:
   - component: {fileID: 976594353}
   - component: {fileID: 976594355}
   - component: {fileID: 976594354}
-  - component: {fileID: 976594356}
   m_Layer: 0
   m_Name: PickUps-
-  m_TagString: Negative
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6390,42 +6346,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &976594356
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976594352}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
-  m_UseDelaunayMesh: 0
 --- !u!1 &1036692576
 GameObject:
   m_ObjectHideFlags: 0
