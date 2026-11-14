@@ -283,9 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xStartPosition: -5.5
   yStartPosition: -3.5
-  groundTile: {fileID: 0}
+  groundTile: {fileID: 485527017}
   Tile: {fileID: 0}
-  newTilePosition: {x: 0, y: 0, z: 0}
+  newTilePosition: {x: -3, y: -4, z: 0}
   colliders:
   - {fileID: 1036692576}
   - {fileID: 1870778392}
@@ -327,7 +327,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7779,7 +7779,6 @@ MonoBehaviour:
   background: {fileID: 8300000, guid: 0f1a6dd440376bd41a4b99daf0193481, type: 3}
   Cat: {fileID: 0}
   wloczkacollect: {fileID: 0}
-  "w\u0142\xF3czkachodzenie": {fileID: 0}
   star: {fileID: 0}
 --- !u!1 &2144902758
 GameObject:
