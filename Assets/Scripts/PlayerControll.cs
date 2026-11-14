@@ -30,12 +30,13 @@ public class PlayerControll : MonoBehaviour
     int moveCount = 0;
     int currentMoveDirection = 0;
 
-    public int maxSpool = 50;
-    public int currentSpool = 50;
+    public int maxSpool = 40;
+    public int currentSpool = 40;
 
-    // Update is called once per frame
+    
     void Start()
     {
+
         previousMoveDirection.Add(0);
         hudLogic.SetMaxSpool(maxSpool);
         hudLogic.changeSpool(0);
@@ -61,8 +62,10 @@ public class PlayerControll : MonoBehaviour
             {
                 CheckMoveDirection(direction);
             }
-            PlaceThread(direction);
-
+            if (PlaceThread(direction) == false)
+            { 
+            return;
+            }
 
             Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
             if (InteractableCheck(direction) == 1)
@@ -75,6 +78,7 @@ public class PlayerControll : MonoBehaviour
             else if (InteractableCheck(direction) == 2)
             {
                 Debug.Log("Negative interaction");
+
                 currentSpool = currentSpool - 10;
                 hudLogic.changeSpool(-10);
                 interactableNegative.SetTile(gridPosition, null);
@@ -84,7 +88,6 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("no interaction");
             }
             transform.position += (Vector3)direction;
-            hudLogic.changeSpool(-1);
         }
 
     }
@@ -139,11 +142,10 @@ public class PlayerControll : MonoBehaviour
         }
         print(currentMoveDirection);
     }
-    void PlaceThread(Vector2 direction)
+    bool PlaceThread(Vector2 direction)
     {
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position);
         Vector3Int futureGridPostion = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
-        print(previousMoveDirection.Count);
 
         if (currentMoveDirection + previousMoveDirection[previousMoveDirection.Count-1] == 0) //the spool is moving back
         {
@@ -152,33 +154,39 @@ public class PlayerControll : MonoBehaviour
             //spoolTrail1.SetTile(gridPosition, null);
             previousMoveDirection.RemoveAt(previousMoveDirection.Count - 1);
 
-            return;
+            return true;
         }
 
-         else if (previousMoveDirection[previousMoveDirection.Count - 1] == 0)
+        if (currentSpool <= 0)
+        {
+            print("OutofSpool");
+            return false;
+        }
+
+        else if (previousMoveDirection[previousMoveDirection.Count - 1] == 0)
         {
             //print("This is fist move");
             PlaceSpoolTile(gridPosition, spoolStraightTopDown, futureGridPostion, false);
             //spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
         }
- 
+
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && Mathf.Abs(currentMoveDirection) == 2)
         {
 
-           // print("PlaceStraightLine");
+            // print("PlaceStraightLine");
             PlaceSpoolTile(gridPosition, spoolStraightLeftRight, futureGridPostion, false);
-          //  spoolTrail1.SetTile(gridPosition, spoolStraightLeftRight);
+            //  spoolTrail1.SetTile(gridPosition, spoolStraightLeftRight);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && Mathf.Abs(currentMoveDirection) == 1)
         {
             //print("PlaceStraightLine");
             PlaceSpoolTile(gridPosition, spoolStraightTopDown, futureGridPostion, false);
-           // spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
+            // spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
         }
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] > 0 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 1)
         {
-           // print("Placea leftdowntile");
+            // print("Placea leftdowntile");
             PlaceSpoolTile(gridPosition, spoolLeftDown, futureGridPostion, false);
             //spoolTrail1.SetTile(gridPosition, spoolLeftDown);
         }
@@ -186,43 +194,45 @@ public class PlayerControll : MonoBehaviour
         {
             //print("PlacerightUp");
             PlaceSpoolTile(gridPosition, spoolRightUp, futureGridPostion, false);
-           // spoolTrail1.SetTile(gridPosition, spoolRightUp);
+            // spoolTrail1.SetTile(gridPosition, spoolRightUp);
         }
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == 2 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-           // print("Placea leftuptile");
+            // print("Placea leftuptile");
             PlaceSpoolTile(gridPosition, spoolLeftUp, futureGridPostion, false);
-           // spoolTrail1.SetTile(gridPosition, spoolLeftUp);
+            // spoolTrail1.SetTile(gridPosition, spoolLeftUp);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == -1 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-           // print("Placea leftuptile");
+            // print("Placea leftuptile");
             PlaceSpoolTile(gridPosition, spoolLeftUp, futureGridPostion, false);
-          //  spoolTrail1.SetTile(gridPosition, spoolLeftUp);
+            //  spoolTrail1.SetTile(gridPosition, spoolLeftUp);
         }
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == -2 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-           // print("Placea right down");
+            // print("Placea right down");
             PlaceSpoolTile(gridPosition, spoolRightDown, futureGridPostion, false);
             //spoolTrail1.SetTile(gridPosition, spoolRightDown);
         }
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == 1 && Mathf.Abs(previousMoveDirection[previousMoveDirection.Count - 1] + currentMoveDirection) == 3)
         {
-           // print("Placea right down");
+            // print("Placea right down");
             PlaceSpoolTile(gridPosition, spoolRightDown, futureGridPostion, false);
-           // spoolTrail1.SetTile(gridPosition, spoolRightDown);
+            // spoolTrail1.SetTile(gridPosition, spoolRightDown);
         }
         previousMoveDirection.Add(currentMoveDirection);
         //print(previousMoveDirection);
+        return true;
     }
 
     void PlaceSpoolTile(Vector3Int gridPosition, AnimatedTile tile, Vector3Int futureGidPossiton, bool isReturning)
     {
         if (isReturning == true)
         {
-
+            print("thisshoudgo");
+            ChangeSpool(1);
             if (spoolTrail5.HasTile(gridPosition) == true)
             {
                 spoolTrail5.SetTile(gridPosition, null);
@@ -237,16 +247,15 @@ public class PlayerControll : MonoBehaviour
             }
             else if(spoolTrail2.HasTile(gridPosition) == true)
             {
-                print("Works");
+    
                 spoolTrail2.SetTile(gridPosition, null);
             }
             else if(spoolTrail1.HasTile(gridPosition) == true)
             {
-                print("cut");
+   
                 spoolTrail1.SetTile(gridPosition, null);
             }
         }
-
         else if (spoolTrail5.HasTile(gridPosition) == true)
         {
             print("We Have A problem");
@@ -266,12 +275,26 @@ public class PlayerControll : MonoBehaviour
         else if(spoolTrail1.HasTile(gridPosition) == true)
         {
             spoolTrail2.SetTile(gridPosition, tile);
-            print("cut");
         }
         else 
         {
-            print("Works");
             spoolTrail1.SetTile(gridPosition, tile);
         }
+        if (isReturning == false)
+        {
+            ChangeSpool(-1);
+        }
+
+
     }
+    void ChangeSpool(int value)
+    {
+        currentSpool += value;
+        hudLogic.changeSpool(value);
+        if (currentSpool < 0)
+        { 
+            currentSpool = 0;
+        }
+        print("Spool Count " + currentSpool);
+    }    
 }
