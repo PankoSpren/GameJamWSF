@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 98232417}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 406190457}
   m_Layer: 0
   m_Name: PickUps+
-  m_TagString: Untagged
+  m_TagString: Positive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6205,7 +6205,7 @@ GameObject:
   - component: {fileID: 976594354}
   m_Layer: 0
   m_Name: PickUps-
-  m_TagString: Untagged
+  m_TagString: Negative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7777,8 +7777,9 @@ MonoBehaviour:
   musicSource: {fileID: 1764238726}
   SFXSource: {fileID: 60823854}
   background: {fileID: 8300000, guid: 0f1a6dd440376bd41a4b99daf0193481, type: 3}
-  Cat: {fileID: 0}
-  wloczkacollect: {fileID: 0}
+  cat: {fileID: 0}
+  collect: {fileID: 0}
+  chodzenie: {fileID: 0}
   star: {fileID: 0}
 --- !u!1 &2144902758
 GameObject:

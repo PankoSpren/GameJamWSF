@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Positive
+  - Negative
   layers:
   - Default
   - TransparentFX
