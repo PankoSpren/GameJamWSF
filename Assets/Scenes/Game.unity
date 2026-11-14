@@ -331,7 +331,6 @@ GameObject:
   - component: {fileID: 98232420}
   - component: {fileID: 98232419}
   - component: {fileID: 98232421}
-  - component: {fileID: 98232423}
   - component: {fileID: 98232422}
   m_Layer: 0
   m_Name: Player
@@ -429,7 +428,7 @@ MonoBehaviour:
   spoolTrail3: {fileID: 1178863761}
   spoolTrail4: {fileID: 104254252}
   spoolTrail5: {fileID: 0}
-  spoolStraightTopDown: {fileID: 11400000, guid: 6a82d8405c28f904bac2596d04f531d5, type: 2}
+  spoolStraightTopDown: {fileID: 11400000, guid: 3cb025d57a8cc2a43becb1b2f766ba29, type: 2}
   spoolStraightLeftRight: {fileID: 11400000, guid: 4faba71f175849741b4be62d2e51b548, type: 2}
   spoolLeftDown: {fileID: 11400000, guid: 6a8c8d5bdeeec78469cbea300f4f4c39, type: 2}
   spoolLeftUp: {fileID: 11400000, guid: 5eb76076ea7a6064e894675a0d81a7f4, type: 2}
@@ -458,23 +457,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &98232423
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98232416}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: -6663680999604783092, guid: c11dc36c8a9ef0e4a9f585688cd55e48, type: 3}
-  m_Animations:
-  - {fileID: -6663680999604783092, guid: c11dc36c8a9ef0e4a9f585688cd55e48, type: 3}
-  - {fileID: -6663680999604783092, guid: c11dc36c8a9ef0e4a9f585688cd55e48, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &104254249
 GameObject:
   m_ObjectHideFlags: 0

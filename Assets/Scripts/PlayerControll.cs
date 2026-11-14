@@ -161,12 +161,13 @@ public class PlayerControll : MonoBehaviour
             spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
         }
  
-        else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && currentMoveDirection == 2)
+        else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && Mathf.Abs(currentMoveDirection) == 2)
         {
-            print("PlaceStraightLine");
+
+                print("PlaceStraightLine");
             spoolTrail1.SetTile(gridPosition, spoolStraightLeftRight);
         }
-        else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && currentMoveDirection == 1)
+        else if (previousMoveDirection[previousMoveDirection.Count - 1] == currentMoveDirection && Mathf.Abs(currentMoveDirection) == 1)
         {
             print("PlaceStraightLine");
             spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
