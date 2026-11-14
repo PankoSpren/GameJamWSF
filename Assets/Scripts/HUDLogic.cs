@@ -18,12 +18,9 @@ public class HUDLogic : MonoBehaviour
         spoolSlider.maxValue = maxSpool;
         spoolSlider.value = maxSpool;
     }
-    // Start is called before the first frame update
     public void changeSpool(int spool)
     {
         spoolSlider.value = spoolSlider.value +spool;
     }
-
-
 }
 
