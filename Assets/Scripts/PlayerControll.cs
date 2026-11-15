@@ -30,6 +30,10 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolRightUp;
     [SerializeField] private AnimatedTile catAttack;
 
+    [SerializeField] private GameObject top;
+    [SerializeField] private GameObject down;
+    [SerializeField] private GameObject left;
+    [SerializeField] private GameObject right;
 
     [SerializeField] private AnimatedTile capturedButton;
     [SerializeField] private AnimatedTile normalButton;
@@ -58,11 +62,16 @@ public class PlayerControll : MonoBehaviour
 
     private void Awake()
     {
+    
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Start()
     {
+        top.SetActive(false);
+        down.SetActive(false);
+        left.SetActive(false);
+        right.SetActive(false);
 
         startingLocation = groundTilemap.WorldToCell(transform.position);
         previousMoveDirection.Add(0);
@@ -82,6 +91,7 @@ public class PlayerControll : MonoBehaviour
     }
     void movePlayer(Vector2 direction)
     {
+        print("ISDUING");
         // playerCube.transform.position += direction;
         if (MoveCheck(direction))
         {
@@ -144,6 +154,36 @@ public class PlayerControll : MonoBehaviour
             }
 
             transform.position += (Vector3)direction;
+
+            if (direction.x == 1)
+            {
+                left.SetActive(true);
+                top.SetActive(false);
+                down.SetActive(false);
+                right.SetActive(false);
+            }
+            else if (direction.x == -1)
+            {
+                left.SetActive(false);
+                top.SetActive(false);
+                down.SetActive(false);
+                right.SetActive(true);
+            }
+            else if (direction.y == 1)
+            {
+                left.SetActive(false);
+                top.SetActive(false);
+                down.SetActive(true);
+                right.SetActive(false);
+            }
+            else if (direction.y == -1)
+            {
+                left.SetActive(false);
+                top.SetActive(true);
+                down.SetActive(false);
+                right.SetActive(false);
+            }
+
         }
 
 
@@ -475,7 +515,7 @@ public class PlayerControll : MonoBehaviour
         Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3 (0, 1, 0));
         
         interactableNegative.SetTile(gridposition, catAttack);
-        Invoke("KillKat", 2.5f);
+        Invoke("KillKat", 2);
     }
     void KillKat()
     {
