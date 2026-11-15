@@ -8776,7 +8776,7 @@ Tilemap:
       - {fileID: 5803381607993497028, guid: d3f0acb64e85e0041ac6ab57604eb08b, type: 3}
       - {fileID: -1666639584829230213, guid: d3f0acb64e85e0041ac6ab57604eb08b, type: 3}
       - {fileID: -3837579707699681189, guid: d3f0acb64e85e0041ac6ab57604eb08b, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -11603,11 +11603,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1764238726}
   SFXSource: {fileID: 60823854}
-  background: {fileID: 8300000, guid: 0f1a6dd440376bd41a4b99daf0193481, type: 3}
-  cat: {fileID: 8300000, guid: 30c4079bfe4344e41a8c36b19c236f03, type: 3}
-  collect: {fileID: 8300000, guid: 76beecb99e3b34c40b66abb63d71e33d, type: 3}
+  background: {fileID: 8300000, guid: f3c6f08cd3c1314499782ae654dcfdf9, type: 3}
+  cat: {fileID: 8300000, guid: 8fa830de9fcc5dd4e8f1f8ac01fc54ed, type: 3}
+  collect: {fileID: 8300000, guid: 37b357473eb8c274aa9804867d336f27, type: 3}
   chodzenie: {fileID: 0}
-  star: {fileID: 8300000, guid: 0d7076a034daa0b46b80e86330c9a7be, type: 3}
+  star: {fileID: 8300000, guid: dd4a56b451881ed41a8ecd6986f9d375, type: 3}
 --- !u!1 &2144902758
 GameObject:
   m_ObjectHideFlags: 0
