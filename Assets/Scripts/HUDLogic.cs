@@ -30,7 +30,7 @@ public class HUDLogic : MonoBehaviour
     }
     public void SpawnVictory()
     {
-        victoryWord.text = "Victory";
+        victoryWord.text = "Victory!!!";
         Invoke("SpawnVictoryDescription", 2f);
 
     }
