@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
   m_Name: FirstMoverUp
   m_EditorClassIdentifier: 
-  m_AnimatedSprites: []
+  m_AnimatedSprites:
+  - {fileID: 140864885061849398, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: -2423904341276143369, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: -629086714800188850, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: -3816139324641767289, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: 2442518300374243915, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: 3480031207064401340, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: -6204191294884483958, guid: 7efc898726c188143b482d7c5298891f, type: 3}
+  - {fileID: 2725616034839865097, guid: 7efc898726c188143b482d7c5298891f, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0

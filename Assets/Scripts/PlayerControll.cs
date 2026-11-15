@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
+using UnityEngine.WSA;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -26,6 +28,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolLeftUp;
     [SerializeField] private AnimatedTile spoolRightDown;
     [SerializeField] private AnimatedTile spoolRightUp;
+    [SerializeField] private AnimatedTile catAttack;
 
 
     [SerializeField] private AnimatedTile capturedButton;
@@ -69,6 +72,8 @@ public class PlayerControll : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        { CatAttack(); }
         if (victoryMarchInProgress == true) { return; }
         if (Input.GetKeyDown(KeyCode.W)) { movePlayer(new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.S)) { movePlayer(-new Vector2(0, 1)); }
@@ -461,5 +466,20 @@ public class PlayerControll : MonoBehaviour
             }
             else { x--; }
         }
+    }
+
+
+    void CatAttack()
+    {
+        print("test");
+        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3 (0, 1, 0));
+        
+        interactableNegative.SetTile(gridposition, catAttack);
+        Invoke("KillKat", 2.5f);
+    }
+    void KillKat()
+    {
+        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3(0, 1, 0));
+        interactableNegative.SetTile(gridposition, null);
     }
 }
