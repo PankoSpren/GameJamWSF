@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
@@ -52,6 +53,7 @@ public class PlayerControll : MonoBehaviour
     int collectedButtons = 0;
     int buttonCount = 1;
     bool victoryMarchInProgress = false;
+    bool noActionsAvalable = false;
 
     int lastCoinCaptureCount;
     
@@ -83,7 +85,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         { CatAttack(); }
-        if (victoryMarchInProgress == true) { return; }
+        if (victoryMarchInProgress == true || noActionsAvalable == true) { return; }
         if (Input.GetKeyDown(KeyCode.W)) { movePlayer(new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.S)) { movePlayer(-new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.A)) { movePlayer(-new Vector2(1, 0)); }
@@ -126,6 +128,7 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("Negative interaction");
 
                 ChangeSpool(-4);
+                CatAttack();
                 audioManager.PlaySFX(audioManager.cat);
                 hudLogic.SetMaxSpool(maxSpool - 4);
                 maxSpool = maxSpool - 4;
@@ -155,10 +158,7 @@ public class PlayerControll : MonoBehaviour
 
             transform.position += (Vector3)direction;
 
-
-
         }
-
 
         CheckTransitionConditions();
         CheckVictoryConditions();
@@ -434,8 +434,10 @@ public class PlayerControll : MonoBehaviour
     }
     void PerformVictoryMarchMove()
     {
+        //print("Spool count " + currentSpool);
         victoryMoveCount++;
-        currentSpool += 1;
+        //currentSpool += 1;
+
         CheckTransitionConditions();
 
         //AddTail(new Vector2(0, 0), false, previousMoveDirection[previousMoveDirection.Count - victoryMoveCount+1]); Will not implement
@@ -477,6 +479,7 @@ public class PlayerControll : MonoBehaviour
             print("YouHavePrformed " + (previousMoveDirection.Count - 1) + " moves");
             print("In the vicotrymarch you moved times; " + victoryMoveCount);
 
+            SceneManager.LoadScene("Game2");
         }
     }
 
@@ -503,7 +506,7 @@ public class PlayerControll : MonoBehaviour
 
     void CatAttack()
     {
-        print("test");
+        noActionsAvalable = true;
         Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3 (0, 1, 0));
         
         interactableNegative.SetTile(gridposition, catAttack);
