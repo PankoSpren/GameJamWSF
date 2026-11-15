@@ -28,6 +28,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolRightDown;
     [SerializeField] private AnimatedTile spoolRightUp;
     [SerializeField] private AnimatedTile catAttack;
+    [SerializeField] private AnimatedTile coinGainAnimation;
 
     [SerializeField] private GameObject top;
     [SerializeField] private GameObject down;
@@ -516,8 +517,9 @@ public class PlayerControll : MonoBehaviour
     }
     void KillKat()
     {
-        //Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3(0, 1, 0));
-       // interactableNegative.SetTile(gridposition, null);
+        noActionsAvalable = false;
+        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //- new Vector3(0, 1, 0));
+        interactableNegative.SetTile(gridposition, null);
     }
 
     void AddTail(Vector2 direction, bool isMovingForward, int reversedMove)
