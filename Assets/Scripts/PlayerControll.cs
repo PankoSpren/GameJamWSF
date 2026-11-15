@@ -19,12 +19,15 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Tilemap spoolTrail4;
     [SerializeField] private Tilemap spoolTrail5;
 
+    [SerializeField] private AnimatedTile[] spoolStart;
     [SerializeField] private AnimatedTile spoolStraightTopDown;
     [SerializeField] private AnimatedTile spoolStraightLeftRight;
     [SerializeField] private AnimatedTile spoolLeftDown;
     [SerializeField] private AnimatedTile spoolLeftUp;
     [SerializeField] private AnimatedTile spoolRightDown;
     [SerializeField] private AnimatedTile spoolRightUp;
+
+
     [SerializeField] private AnimatedTile capturedButton;
     [SerializeField] private AnimatedTile normalButton;
 
@@ -42,6 +45,8 @@ public class PlayerControll : MonoBehaviour
     int collectedButtons = 0;
     int buttonCount = 1;
     bool victoryMarchInProgress = false;
+
+    int lastCoinCaptureCount;
     
 
 
@@ -116,11 +121,16 @@ public class PlayerControll : MonoBehaviour
             }
             else if (InteractableCheck(direction) == 3)
             {
-                Debug.Log("Button");
-                collectedButtons += 1;
-                buttonTile.SetTile(gridPosition, capturedButton);
-                audioManager.PlaySFX(audioManager.collect); 
-                print("Number of buttons collected: " + collectedButtons);
+                if (buttonTile.ContainsTile(capturedButton) == false)
+                {
+                    Debug.Log("Button");
+                    collectedButtons += 1;
+                    buttonTile.SetTile(gridPosition, capturedButton);
+                    audioManager.PlaySFX(audioManager.collect);
+                    lastCoinCaptureCount = previousMoveDirection.Count - 1;
+                    print("Number of buttons collected: " + collectedButtons);
+                }
+
             }
           
             else if (InteractableCheck(direction) == 0)
@@ -203,9 +213,9 @@ public class PlayerControll : MonoBehaviour
             gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
             PlaceSpoolTile(gridPosition, null, futureGridPostion, true);
 
-         
+
             Vector3Int currentTile = groundTilemap.WorldToCell(transform.position);
-            if (buttonTile.HasTile(currentTile) == true)
+            if (buttonTile.HasTile(currentTile) == true && lastCoinCaptureCount == previousMoveDirection.Count - 1)
             {
                 collectedButtons -= 1;
                 buttonTile.SetTile(currentTile, normalButton);
@@ -228,8 +238,17 @@ public class PlayerControll : MonoBehaviour
 
         else if (previousMoveDirection[previousMoveDirection.Count - 1] == 0)
         {
+            AnimatedTile firstMove;
             //print("This is fist move");
-            PlaceSpoolTile(gridPosition, spoolStraightTopDown, futureGridPostion, false);
+            if (direction.x == 1)
+            {
+                 firstMove = spoolStart[0];
+            }
+            else
+            {
+                 firstMove = spoolStart[1];
+            }
+                PlaceSpoolTile(gridPosition, firstMove, futureGridPostion, false);
             //spoolTrail1.SetTile(gridPosition, spoolStraightTopDown);
         }
 
@@ -380,7 +399,7 @@ public class PlayerControll : MonoBehaviour
         buttonCount += 1;
         collectedButtons = 0;
         hudLogic.SpawnVictory();
-        InvokeRepeating("PerformVictoryMarchMove", 0.5f, 0.5f);
+        InvokeRepeating("PerformVictoryMarchMove", 0.25f, 0.25f);
     }
     void PerformVictoryMarchMove()
     {
