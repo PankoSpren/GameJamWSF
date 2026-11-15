@@ -134,7 +134,7 @@ public class PlayerControll : MonoBehaviour
                 hudLogic.changeSpool(10);*/
                 interactablePositive.SetTile(gridPosition, null);
             }
-            else if (InteractableCheck(direction) == 2)
+            else if (InteractableCheck(new Vector2(direction.x, direction.y -1)) == 2)
             {
                 Debug.Log("Negative interaction");
 
@@ -147,8 +147,9 @@ public class PlayerControll : MonoBehaviour
                 maxSpool = maxSpool - 4;
                 /* currentSpool = currentSpool - 10;
                  hudLogic.changeSpool(-10);*/
-                Vector3Int modifiedGridPosition = new Vector3Int(gridPosition.x - 1, gridPosition.y, 0);
-                interactableNegative.SetTile(gridPosition, null);
+                Vector3Int modifiedGridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);// (gridPosition - (Vector3)direction);
+                   modifiedGridPosition = new Vector3Int(modifiedGridPosition.x, modifiedGridPosition.y - 1, 0);
+                interactableNegative.SetTile(modifiedGridPosition, null);
             }
             else if (InteractableCheck(direction) == 3)
             {
@@ -529,7 +530,7 @@ public class PlayerControll : MonoBehaviour
     {
     
         noActionsAvalable = true;
-        Vector3 test = new Vector3 (direction.x, direction.y, 0);
+        Vector3 test = new Vector3 (direction.x, direction.y-1, 0);
         //Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //+ test);// new Vector3(1,1,0));// + (Vector3)directin);
 
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
