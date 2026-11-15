@@ -5259,7 +5259,7 @@ Tilemap:
       - {fileID: 178271159860382903, guid: 52ca81e68c1041f40915c044aa0a0300, type: 3}
       - {fileID: 178271159860382903, guid: 52ca81e68c1041f40915c044aa0a0300, type: 3}
       - {fileID: 178271159860382903, guid: 52ca81e68c1041f40915c044aa0a0300, type: 3}
-      m_AnimationSpeed: 13.000001
+      m_AnimationSpeed: 13
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: 5, z: 0}
@@ -5603,8 +5603,8 @@ Camera:
   m_GameObject: {fileID: 622551288}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.09192569, g: 0, b: 0.122641504, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -13685,8 +13685,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210, y: -79}
-  m_SizeDelta: {x: 283.5359, y: 55.19873}
+  m_AnchoredPosition: {x: 288.86505, y: -100.67853}
+  m_SizeDelta: {x: 441.266, y: 98.5558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144902760
 MonoBehaviour:
