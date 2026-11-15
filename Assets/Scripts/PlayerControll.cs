@@ -27,7 +27,9 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolRightUp;
     [SerializeField] private AnimatedTile capturedButton;
     [SerializeField] private AnimatedTile normalButton;
-    [SerializeField] private Tile debugtile;
+
+    public Animator animator;
+
 
     AudioManager audioManager;
 
@@ -53,6 +55,7 @@ public class PlayerControll : MonoBehaviour
 
     void Start()
     {
+
         startingLocation = groundTilemap.WorldToCell(transform.position);
         previousMoveDirection.Add(0);
         hudLogic.SetMaxSpool(maxSpool);
@@ -128,6 +131,8 @@ public class PlayerControll : MonoBehaviour
             transform.position += (Vector3)direction;
         }
 
+
+        CheckTransitionConditions();
         CheckVictoryConditions();
     }
 
@@ -415,6 +420,27 @@ public class PlayerControll : MonoBehaviour
             print("YouHavePrformed " + (previousMoveDirection.Count - 1) + " moves");
             print("In the vicotrymarch you moved times; " + victoryMoveCount);
 
+        }
+    }
+
+
+
+
+
+    void CheckTransitionConditions()
+    {
+        float sigleBlock = maxSpool / 18;
+        int x = 17;
+        //print(playerScript.maxSpool + "  " + playerScript.currentSpool + "  " + sigleBlock);
+
+        while (x > 0)
+        {
+            if (sigleBlock * x < currentSpool)
+            {
+                animator.SetInteger("TransitionInt", (17 - x));
+                x = 0; break;
+            }
+            else { x--; }
         }
     }
 }

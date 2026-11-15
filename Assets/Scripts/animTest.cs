@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
+
 using UnityEngine;
 
 public class animTest : MonoBehaviour
 {
-    PlayerControll playerScript;
+   /* PlayerControll playerScript;
     Animator animator;
     float sigleBlock;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        playerScript = GetComponent<PlayerControll>();
+       playerScript = GetComponent<PlayerControll>();
    
 
     }
@@ -37,6 +37,6 @@ public class animTest : MonoBehaviour
             }
             else { x--; }
         }
-    }
+    }*/
 }
 
