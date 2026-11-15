@@ -550,6 +550,7 @@ MonoBehaviour:
   spoolRightDown: {fileID: 11400000, guid: 2df81dde3ca6cd949a07bd38b8027e68, type: 2}
   spoolRightUp: {fileID: 11400000, guid: d7acc3af80b60f3418ac373ffbee4a3a, type: 2}
   catAttack: {fileID: 11400000, guid: 599e240d47b45ab4ba96c04612eb83da, type: 2}
+  coinGainAnimation: {fileID: 11400000, guid: f0a4880fc5083524482e95c28ab0c212, type: 2}
   top: {fileID: 1284268929}
   down: {fileID: 856382937}
   left: {fileID: 3081983}
