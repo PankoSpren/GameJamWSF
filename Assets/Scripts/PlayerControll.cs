@@ -38,6 +38,8 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile capturedButton;
     [SerializeField] private AnimatedTile normalButton;
 
+    [SerializeField] private int buttonCount = 0;
+
     public Animator animator;
 
     Vector3Int recrdedPosition;
@@ -52,7 +54,7 @@ public class PlayerControll : MonoBehaviour
     float savedTime = 0;
 
     int collectedButtons = 0;
-    int buttonCount = 1;
+
     bool victoryMarchInProgress = false;
     bool noActionsAvalable = false;
 
@@ -432,7 +434,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (groundTilemap.WorldToCell(transform.position) == startingLocation && buttonCount <= collectedButtons && currentSpool == 0)
         {
-            print("Victory");
+   
             PerformVictoryMarch();
         }
     }
