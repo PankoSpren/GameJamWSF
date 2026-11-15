@@ -91,7 +91,7 @@ public class PlayerControll : MonoBehaviour
     }
     void movePlayer(Vector2 direction)
     {
-        print("ISDUING");
+
         // playerCube.transform.position += direction;
         if (MoveCheck(direction))
         {
@@ -155,34 +155,7 @@ public class PlayerControll : MonoBehaviour
 
             transform.position += (Vector3)direction;
 
-            if (direction.x == 1)
-            {
-                left.SetActive(true);
-                top.SetActive(false);
-                down.SetActive(false);
-                right.SetActive(false);
-            }
-            else if (direction.x == -1)
-            {
-                left.SetActive(false);
-                top.SetActive(false);
-                down.SetActive(false);
-                right.SetActive(true);
-            }
-            else if (direction.y == 1)
-            {
-                left.SetActive(false);
-                top.SetActive(false);
-                down.SetActive(true);
-                right.SetActive(false);
-            }
-            else if (direction.y == -1)
-            {
-                left.SetActive(false);
-                top.SetActive(true);
-                down.SetActive(false);
-                right.SetActive(false);
-            }
+
 
         }
 
@@ -268,6 +241,8 @@ public class PlayerControll : MonoBehaviour
                 print("Coin Count" + collectedButtons);
             }
 
+            AddTail(direction, false, previousMoveDirection[previousMoveDirection.Count - 2]);
+
 
             //spoolTrail1.SetTile(gridPosition, null);
             previousMoveDirection.RemoveAt(previousMoveDirection.Count - 1);
@@ -351,6 +326,10 @@ public class PlayerControll : MonoBehaviour
         }
         previousMoveDirection.Add(currentMoveDirection);
         //print(previousMoveDirection);
+
+        AddTail(direction, true, 0);
+
+
         return true;
     }
 
@@ -444,11 +423,23 @@ public class PlayerControll : MonoBehaviour
         buttonCount += 1;
         collectedButtons = 0;
         hudLogic.SpawnVictory();
+
+        left.SetActive(false);
+        top.SetActive(false);
+        down.SetActive(false);
+        right.SetActive(false);
+
         InvokeRepeating("PerformVictoryMarchMove", 0.25f, 0.25f);
+
     }
     void PerformVictoryMarchMove()
     {
         victoryMoveCount++;
+        currentSpool += 1;
+        CheckTransitionConditions();
+
+        //AddTail(new Vector2(0, 0), false, previousMoveDirection[previousMoveDirection.Count - victoryMoveCount+1]); Will not implement
+
         PlaceSpoolTile(groundTilemap.WorldToCell(transform.position), null, groundTilemap.WorldToCell(transform.position), true);
         if (previousMoveDirection[previousMoveDirection.Count - victoryMoveCount] == -1)
         {
@@ -479,6 +470,8 @@ public class PlayerControll : MonoBehaviour
 
         if (victoryMoveCount == previousMoveDirection.Count - 1)
         {
+
+
             CancelInvoke("PerformVictoryMarchMove");
             print("YouHaveReachedTheStart");
             print("YouHavePrformed " + (previousMoveDirection.Count - 1) + " moves");
@@ -486,7 +479,6 @@ public class PlayerControll : MonoBehaviour
 
         }
     }
-
 
 
 
@@ -521,5 +513,79 @@ public class PlayerControll : MonoBehaviour
     {
         Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3(0, 1, 0));
         interactableNegative.SetTile(gridposition, null);
+    }
+
+    void AddTail(Vector2 direction, bool isMovingForward, int reversedMove)
+    {
+        if (isMovingForward == true)
+        {
+            if (direction.x == 1)
+            {
+
+
+                left.SetActive(true);
+                top.SetActive(false);
+                down.SetActive(false);
+                right.SetActive(false);
+            }
+            else if (direction.x == -1)
+            {
+                left.SetActive(false);
+                top.SetActive(false);
+                down.SetActive(false);
+                right.SetActive(true);
+            }
+            else if (direction.y == 1)
+            {
+                left.SetActive(false);
+                top.SetActive(false);
+                down.SetActive(true);
+                right.SetActive(false);
+            }
+            else if (direction.y == -1)
+            {
+                left.SetActive(false);
+                top.SetActive(true);
+                down.SetActive(false);
+                right.SetActive(false);
+            }
+        }
+        else
+        {
+            if (reversedMove == 1)
+            {
+                left.SetActive(false);
+                top.SetActive(false);
+                down.SetActive(true);
+                right.SetActive(false);
+
+
+            }
+            else if (reversedMove == -1)
+            {
+
+                left.SetActive(false);
+                top.SetActive(true);
+                down.SetActive(false);
+                right.SetActive(false);
+
+            }
+            else if (reversedMove == 2)
+            {
+                left.SetActive(true);
+                top.SetActive(false);
+                down.SetActive(false);
+                right.SetActive(false);
+            }
+            else if (reversedMove == -2)
+            {
+
+                left.SetActive(false);
+                top.SetActive(false);
+                down.SetActive(false);
+                right.SetActive(true);
+            }
+        }
+
     }
 }
