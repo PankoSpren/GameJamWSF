@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: wloczka
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -5851111425232343108, guid: 8ec08be637dbc254aa0aa6426430210a, type: 3}
+  - {fileID: 41463631626150336, guid: c11dc36c8a9ef0e4a9f585688cd55e48, type: 3}
   - {fileID: 4745218766203723939, guid: 8ec08be637dbc254aa0aa6426430210a, type: 3}
   - {fileID: 7224307925303900114, guid: 8ec08be637dbc254aa0aa6426430210a, type: 3}
   - {fileID: 5618743919470837104, guid: 8ec08be637dbc254aa0aa6426430210a, type: 3}
