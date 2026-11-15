@@ -5259,7 +5259,7 @@ Tilemap:
       - {fileID: 178271159860382903, guid: 52ca81e68c1041f40915c044aa0a0300, type: 3}
       - {fileID: 178271159860382903, guid: 52ca81e68c1041f40915c044aa0a0300, type: 3}
       - {fileID: 178271159860382903, guid: 52ca81e68c1041f40915c044aa0a0300, type: 3}
-      m_AnimationSpeed: 13
+      m_AnimationSpeed: 13.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: 5, z: 0}
@@ -11073,17 +11073,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Victory!!!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5a323c055670852438213357449cec86, type: 2}
+  m_sharedMaterial: {fileID: -5269533985450634966, guid: 5a323c055670852438213357449cec86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286019583
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4286136820
+  m_fontColor: {r: 0.9559748, g: 0.2555277, b: 0.4744762, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11100,8 +11100,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 180
+  m_fontSizeBase: 180
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
