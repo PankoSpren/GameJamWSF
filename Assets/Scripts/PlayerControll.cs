@@ -530,7 +530,7 @@ public class PlayerControll : MonoBehaviour
     {
     
         noActionsAvalable = true;
-        Vector3 test = new Vector3 (direction.x, direction.y-1, 0);
+        Vector3 test = new Vector3 (direction.x, direction.y, 0);
         //Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //+ test);// new Vector3(1,1,0));// + (Vector3)directin);
 
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
