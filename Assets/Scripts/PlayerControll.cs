@@ -81,8 +81,7 @@ public class PlayerControll : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        { CatAttack(); }
+
         if (victoryMarchInProgress == true || noActionsAvalable == true) { return; }
         if (Input.GetKeyDown(KeyCode.W)) { movePlayer(new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.S)) { movePlayer(-new Vector2(0, 1)); }
@@ -126,7 +125,9 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("Negative interaction");
 
                 ChangeSpool(-4);
-                CatAttack();
+
+                CatAttack(direction);
+
                 audioManager.PlaySFX(audioManager.cat);
                 hudLogic.SetMaxSpool(maxSpool - 4);
                 maxSpool = maxSpool - 4;
@@ -502,18 +503,21 @@ public class PlayerControll : MonoBehaviour
     }
 
 
-    void CatAttack()
+    void CatAttack(Vector2 directin)
     {
+    
         noActionsAvalable = true;
-        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3 (0, 1, 0));
-        
+        Vector3 test = new Vector3 (directin.x, directin.y, 0);
+        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //+ test);// new Vector3(1,1,0));// + (Vector3)directin);
+
+
         interactableNegative.SetTile(gridposition, catAttack);
         Invoke("KillKat", 2);
     }
     void KillKat()
     {
-        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3(0, 1, 0));
-        interactableNegative.SetTile(gridposition, null);
+        //Vector3Int gridposition = groundTilemap.WorldToCell(transform.position - new Vector3(0, 1, 0));
+       // interactableNegative.SetTile(gridposition, null);
     }
 
     void AddTail(Vector2 direction, bool isMovingForward, int reversedMove)
@@ -522,8 +526,6 @@ public class PlayerControll : MonoBehaviour
         {
             if (direction.x == 1)
             {
-
-
                 left.SetActive(true);
                 top.SetActive(false);
                 down.SetActive(false);
