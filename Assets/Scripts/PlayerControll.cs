@@ -29,6 +29,8 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile normalButton;
     [SerializeField] private Tile debugtile;
 
+    AudioManager audioManager;
+
     Vector3Int startingLocation;
 
     List<int> previousMoveDirection = new List<int>();
@@ -44,6 +46,10 @@ public class PlayerControll : MonoBehaviour
     public int maxSpool = 36;
     public int currentSpool = 36;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -85,6 +91,7 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("Positive interaction");
 
                 ChangeSpool(4);
+                audioManager.PlaySFX(audioManager.star); 
                 hudLogic.SetMaxSpool(maxSpool + 4);
                 maxSpool = maxSpool + 4;
                 /*currentSpool = currentSpool + 10;
@@ -96,6 +103,7 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("Negative interaction");
 
                 ChangeSpool(-4);
+                audioManager.PlaySFX(audioManager.cat);
                 hudLogic.SetMaxSpool(maxSpool - 4);
                 maxSpool = maxSpool - 4;
                 /* currentSpool = currentSpool - 10;
@@ -108,6 +116,7 @@ public class PlayerControll : MonoBehaviour
                 Debug.Log("Button");
                 collectedButtons += 1;
                 buttonTile.SetTile(gridPosition, capturedButton);
+                audioManager.PlaySFX(audioManager.collect); 
                 print("Number of buttons collected: " + collectedButtons);
             }
           
