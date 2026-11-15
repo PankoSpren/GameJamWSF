@@ -38,8 +38,11 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile capturedButton;
     [SerializeField] private AnimatedTile normalButton;
 
+    [SerializeField] private int buttonCount = 0;
+
     public Animator animator;
 
+    Vector3Int recrdedPosition;
 
     AudioManager audioManager;
 
@@ -48,9 +51,10 @@ public class PlayerControll : MonoBehaviour
     List<int> previousMoveDirection = new List<int>();
     int victoryMoveCount = 0;
     int currentMoveDirection = 0;
+    float savedTime = 0;
 
     int collectedButtons = 0;
-    int buttonCount = 1;
+
     bool victoryMarchInProgress = false;
     bool noActionsAvalable = false;
 
@@ -82,8 +86,17 @@ public class PlayerControll : MonoBehaviour
 
     void Update()
     {
+        if (noActionsAvalable == true)
+        {
+            savedTime = savedTime + Time.deltaTime;
+            if (savedTime >= 2)
+            {
+                PlaceCapturedButton();
+            }
 
-        if (victoryMarchInProgress == true || noActionsAvalable == true) { return; }
+        }
+        if (victoryMarchInProgress == true || noActionsAvalable == true)
+        { return; }
         if (Input.GetKeyDown(KeyCode.W)) { movePlayer(new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.S)) { movePlayer(-new Vector2(0, 1)); }
         else if (Input.GetKeyDown(KeyCode.A)) { movePlayer(-new Vector2(1, 0)); }
@@ -143,7 +156,15 @@ public class PlayerControll : MonoBehaviour
                 {
                     Debug.Log("Button");
                     collectedButtons += 1;
-                    buttonTile.SetTile(gridPosition, capturedButton);
+                    noActionsAvalable = true;
+                    buttonTile.SetTile(gridPosition, coinGainAnimation);
+                    recrdedPosition = gridPosition;
+                    
+                    //Invoke("PlaceCapturedButton", 2f);
+                    // buttonTile.SetTile(gridPosition, capturedButton);
+
+
+
                     audioManager.PlaySFX(audioManager.collect);
                     lastCoinCaptureCount = previousMoveDirection.Count - 1;
                     print("Number of buttons collected: " + collectedButtons);
@@ -413,7 +434,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (groundTilemap.WorldToCell(transform.position) == startingLocation && buttonCount <= collectedButtons && currentSpool == 0)
         {
-            print("Victory");
+   
             PerformVictoryMarch();
         }
     }
@@ -504,15 +525,15 @@ public class PlayerControll : MonoBehaviour
     }
 
 
-    void CatAttack(Vector2 directin)
+    void CatAttack(Vector2 direction)
     {
     
         noActionsAvalable = true;
-        Vector3 test = new Vector3 (directin.x, directin.y, 0);
-        Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //+ test);// new Vector3(1,1,0));// + (Vector3)directin);
+        Vector3 test = new Vector3 (direction.x, direction.y, 0);
+        //Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //+ test);// new Vector3(1,1,0));// + (Vector3)directin);
 
-
-        interactableNegative.SetTile(gridposition, catAttack);
+        Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
+        interactableNegative.SetTile(gridPosition, catAttack);
         Invoke("KillKat", 2);
     }
     void KillKat()
@@ -592,5 +613,12 @@ public class PlayerControll : MonoBehaviour
             }
         }
 
+
+    }
+
+     void PlaceCapturedButton()
+    {
+        noActionsAvalable = false;
+        buttonTile.SetTile(recrdedPosition, capturedButton);
     }
 }
