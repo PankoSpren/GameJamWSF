@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
   - {fileID: -3884319400173370796, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -3884319400173370796, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -3884319400173370796, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -3884319400173370796, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -3884319400173370796, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -8810685655678771749, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -8810685655678771749, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: 5086247589723057012, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: 5086247589723057012, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: 5086247589723057012, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -2502834232084821422, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: 6013081019948288126, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
@@ -49,7 +56,13 @@ MonoBehaviour:
   - {fileID: -2520104919738939240, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -3022886907972318803, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -8633690556169237379, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -8633690556169237379, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   - {fileID: -9081973606501634924, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -979292972509432513, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -6533506228845619368, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -2733253686202519499, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -6650660557298291483, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
+  - {fileID: -6650660557298291483, guid: f5ecdcab55ce44d48ab89ad85048ac63, type: 3}
   m_MinSpeed: 17
   m_MaxSpeed: 17
   m_AnimationStartTime: 0
