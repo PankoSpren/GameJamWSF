@@ -13,13 +13,11 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Tilemap interactableNegative;
     [SerializeField] private Tilemap interactablePositive;
     [SerializeField] private Tilemap buttonTile;
-
     [SerializeField] private Tilemap spoolTrail1;
     [SerializeField] private Tilemap spoolTrail2;
     [SerializeField] private Tilemap spoolTrail3;
     [SerializeField] private Tilemap spoolTrail4;
     [SerializeField] private Tilemap spoolTrail5;
-
     [SerializeField] private AnimatedTile[] spoolStart;
     [SerializeField] private AnimatedTile spoolStraightTopDown;
     [SerializeField] private AnimatedTile spoolStraightLeftRight;
@@ -29,45 +27,30 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private AnimatedTile spoolRightUp;
     [SerializeField] private AnimatedTile catAttack;
     [SerializeField] private AnimatedTile coinGainAnimation;
-
     [SerializeField] private GameObject top;
     [SerializeField] private GameObject down;
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
-
     [SerializeField] private AnimatedTile capturedButton;
     [SerializeField] private AnimatedTile normalButton;
-
     [SerializeField] private int buttonCount = 0;
-
     public Animator animator;
-
     Vector3Int recrdedPosition;
-
     AudioManager audioManager;
-
     Vector3Int startingLocation;
-
     List<int> previousMoveDirection = new List<int>();
     int victoryMoveCount = 0;
     int currentMoveDirection = 0;
     float savedTime = 0;
-
     int collectedButtons = 0;
-
     bool victoryMarchInProgress = false;
     bool noActionsAvalable = false;
-
     int lastCoinCaptureCount;
-    
-
-
     public int maxSpool = 36;
     public int currentSpool = 36;
 
     private void Awake()
     {
-    
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -261,7 +244,6 @@ public class PlayerControll : MonoBehaviour
 
             AddTail(direction, false, previousMoveDirection[previousMoveDirection.Count - 2]);
 
-
             //spoolTrail1.SetTile(gridPosition, null);
             previousMoveDirection.RemoveAt(previousMoveDirection.Count - 1);
 
@@ -346,7 +328,6 @@ public class PlayerControll : MonoBehaviour
         //print(previousMoveDirection);
 
         AddTail(direction, true, 0);
-
 
         return true;
     }
@@ -481,13 +462,10 @@ public class PlayerControll : MonoBehaviour
             transform.position += (Vector3)i;
         }
 
-
         print(previousMoveDirection[previousMoveDirection.Count - victoryMoveCount]);
 
         if (victoryMoveCount == previousMoveDirection.Count - 1)
         {
-
-
             CancelInvoke("PerformVictoryMarchMove");
             print("YouHaveReachedTheStart");
             print("YouHavePrformed " + (previousMoveDirection.Count - 1) + " moves");
@@ -496,9 +474,6 @@ public class PlayerControll : MonoBehaviour
             SceneManager.LoadScene("Game2");
         }
     }
-
-
-
 
     void CheckTransitionConditions()
     {
@@ -520,7 +495,6 @@ public class PlayerControll : MonoBehaviour
 
     void CatAttack(Vector2 direction)
     {
-    
         noActionsAvalable = true;
         Vector3 test = new Vector3 (direction.x, direction.y, 0);
         //Vector3Int gridposition = groundTilemap.WorldToCell(transform.position); //+ test);// new Vector3(1,1,0));// + (Vector3)directin);
@@ -578,7 +552,6 @@ public class PlayerControll : MonoBehaviour
                 down.SetActive(true);
                 right.SetActive(false);
 
-
             }
             else if (reversedMove == -1)
             {
@@ -605,8 +578,6 @@ public class PlayerControll : MonoBehaviour
                 right.SetActive(true);
             }
         }
-
-
     }
 
      void PlaceCapturedButton()
