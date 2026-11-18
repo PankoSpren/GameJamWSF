@@ -147,25 +147,21 @@ public class PlayerControll : MonoBehaviour
                 maxSpool = maxSpool - 4;
                 /* currentSpool = currentSpool - 10;
                  hudLogic.changeSpool(-10);*/
-                Vector3Int modifiedGridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);// (gridPosition - (Vector3)direction);
-                   modifiedGridPosition = new Vector3Int(modifiedGridPosition.x, modifiedGridPosition.y - 1, 0);
-                interactableNegative.SetTile(modifiedGridPosition, null);
+                //Vector3Int modifiedGridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);// (gridPosition - (Vector3)direction);
+                //   modifiedGridPosition = new Vector3Int(modifiedGridPosition.x, modifiedGridPosition.y - 1, 0);
+                interactableNegative.SetTile(gridPosition, null);
             }
             else if (InteractableCheck(direction) == 3)
             {
-                if (buttonTile.ContainsTile(capturedButton) == false)
+                Debug.Log(buttonTile.ContainsTile(capturedButton));
+                if (!(buttonTile.GetTile(gridPosition) == capturedButton))
                 {
-                    Debug.Log("Button");
                     collectedButtons += 1;
                     noActionsAvalable = true;
                     buttonTile.SetTile(gridPosition, coinGainAnimation);
                     recrdedPosition = gridPosition;
-                    
                     //Invoke("PlaceCapturedButton", 2f);
                     // buttonTile.SetTile(gridPosition, capturedButton);
-
-
-
                     audioManager.PlaySFX(audioManager.collect);
                     lastCoinCaptureCount = previousMoveDirection.Count - 1;
                     print("Number of buttons collected: " + collectedButtons);
@@ -359,11 +355,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (isReturning == true)
         {
-
-
             ChangeSpool(1);
-
-
             if (spoolTrail5.HasTile(gridPosition) == true)
             {
                 spoolTrail5.SetTile(gridPosition, null);
