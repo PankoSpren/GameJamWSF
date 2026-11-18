@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Positive
   - Negative
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -46,4 +47,7 @@ TagManager:
     locked: 0
   - name: Wall
     uniqueID: 1807428513
+    locked: 0
+  - name: Pierdolce
+    uniqueID: 1296326993
     locked: 0
